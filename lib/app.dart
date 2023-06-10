@@ -60,6 +60,25 @@ class HomeView extends StatelessWidget {
           Text(
             context.select((HomeBloc bloc) => bloc.state.counter.toString()),
           ),
+          FloatingActionButton(
+            onPressed: () {
+              context.read<HomeBloc>().add(const GetData());
+            },
+            child: const Icon(Icons.data_array_sharp),
+          ),
+          BlocBuilder<HomeBloc, HomeState>(
+            buildWhen: (previous,current) => previous.comment != current.comment,
+            builder: (context, state) {
+              return Column(
+                children: [
+                  Text('data'),
+                  Text(
+                      state.comment?.body ?? 'No Data',
+                  ),
+                ],
+              );
+            },
+          ),
         ],
       ),
     );

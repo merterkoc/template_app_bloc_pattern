@@ -24,3 +24,10 @@ class HomeReset extends HomeEvent {
   @override
   List<Object?> get props => [];
 }
+
+class GetData extends HomeEvent {
+  const GetData();
+
+  @override
+  List<Object?> get props => [];
+}
